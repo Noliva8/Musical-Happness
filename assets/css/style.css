@@ -61,7 +61,7 @@ body {
   border-bottom: 0.2px solid black;
 }
 
-.close-button{
+.close-button, .close-added-class{
   appearance: none;
     background-color: transparent;
     border: none;
@@ -69,6 +69,10 @@ body {
     cursor: pointer;
     padding: 0;
     margin: 0;
+    
+}
+.close-added-class{
+  font-size: 40px;
     
 }
 
@@ -113,7 +117,7 @@ input[type="text"] {
 .add-tasks{
   
   /* appearance: none; */
-  background-color: green;
+  
 
     border: none;
     outline: none;
@@ -132,15 +136,3 @@ input[type="text"] {
 
 
 
-
-
-
-/* RESPONSIVNESS */
-@media screen and (max-width: 700px) {
-  .form-container{
-  right: 9%;
-  
-
-}
-  
-}
