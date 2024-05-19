@@ -51,21 +51,21 @@
             <form class="container" id="form">
               <div class="row">
                 <div class="col-12 col-lg-6">
-                  <label for="task name" class="label-form">Task Title</label>
-                  <input type="text" id="task-title" name="task name">
+                  <label for="task-title" class="label-form">Task Title</label>
+                  <input type="text" id="task-title" name="tasName">
                 </div>
                 <div class="col-12 col-lg-6">
-                  <label for="task due date" class="label-form">Task Due Date</label>
-                  <input type="text" id="due-date" name="task name due date">
+                  <label for="due-date" class="label-form">Task Due Date</label>
+                  <input type="text" id="due-date" name="taskNameDueDate">
                 </div>
               </div>
               <div class="row">
                 <div class="col-12">
                   <label for="task-description" class="label-form">Task Description</label>
-                  <input type="text" id="task-description" name="task-description" class="form-control large-input">
+                  <input type="text" id="task-description" name="taskDescription" class="form-control large-input">
                 </div>
               </div>
-              <button type="submit" class="add-tasks btn-success">Add Tasks</button>
+              <button type="submit" id="user-form" class="add-tasks btn-success">Add Tasks</button>
             </form>
 
 
@@ -157,6 +157,10 @@
 
   </div>
 
+<div id="dialog" title="Basic dialog">
+  
+</div>
+ 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
