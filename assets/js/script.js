@@ -35,10 +35,9 @@ $(document).ready(function () {
         const cardContainerEl = $('<div>')
             .addClass('cardContainer ui-widget-content')
             .attr('data-task-id', task.id)
-            .css('background-color', getColorByDate(task.date));
+            .css('background-color', getColorByDate(task.date))
+            .text(task.title);
 
-        const cardHeaderEl = $('<h5>').addClass('card-title').text(task.title);
-        const cardDateEl = $('<p>').addClass('date-p').text(task.date);
         const cardDescriptionEl = $('<p>').addClass('description-p').text(task.description);
         const deleteButton = $('<button>').addClass('btn btn-danger btn-sm delete-btn').text('Delete');
 
@@ -46,8 +45,6 @@ $(document).ready(function () {
             handleDeleteTask(task.id);
         });
 
-        cardContainerEl.append(cardHeaderEl);
-        cardContainerEl.append(cardDateEl);
         cardContainerEl.append(cardDescriptionEl);
         cardContainerEl.append(deleteButton);
 
@@ -60,10 +57,19 @@ $(document).ready(function () {
             helper: 'clone',
             start: function (event, ui) {
                 ui.helper.data('task-id', task.id);
+                ui.helper.css('background-color', 'lightgray'); // Temporary color change during drag
+            },
+            stop: function (event, ui) {
+                const taskId = ui.helper.data('task-id');
+                const task = getTaskById(taskId);
+                ui.helper.css('background-color', getColorByDate(task.date));
             }
         });
+    }
 
-        return cardContainerEl;
+    // Function to get a task by its ID
+    function getTaskById(id) {
+        return taskList.find(task => task.id === id);
     }
 
     // Function to render the task list
@@ -128,7 +134,13 @@ $(document).ready(function () {
     // Initialize droppable areas for lanes
     $('.lane').droppable({
         accept: '.cardContainer',
-        drop: handleDrop
+        drop: handleDrop,
+        over: function (event, ui) {
+            $(this).addClass('ui-state-highlight');
+        },
+        out: function (event, ui) {
+            $(this).removeClass('ui-state-highlight');
+        }
     });
 
     // Initialize date picker
